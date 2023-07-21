@@ -14,6 +14,7 @@ namespace APIV2.Mark.Database.Models
         public string Code { get; set; }
         public string? Description { get; set; }
         public int StatusId { get; set; }
+        public double Balance { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

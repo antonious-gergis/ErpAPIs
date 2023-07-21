@@ -16,6 +16,7 @@ namespace APIV2.Mark.Database.Models
         public string? Mail { get; set; }
         public string? AnotherCode { get; set; }
         public int StatusId { get; set; }
+        public double Balance { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }
