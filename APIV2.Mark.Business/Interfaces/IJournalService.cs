@@ -11,7 +11,7 @@ namespace APIV2.Mark.Business.Interfaces
     public interface IJournalService
     {
         Task<ApiResponse<bool>> Create(JournalDto journalDto);
-        Task<ApiResponse<Journal>> GetItem(long id);
-        Task<ApiResponse<bool>> PostJournal(long id); 
+        Task<ApiResponse<Journal>> GetItem(long id, int transactionStatus);
+        Task<ApiResponse<bool>> PostJournal(long id, int transactionStatus); 
     }
 }

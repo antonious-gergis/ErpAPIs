@@ -19,7 +19,7 @@ namespace APIV2.Mark.Extensions
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IWarehouseService, WarehouseService>();
             services.AddScoped<ITaxService, TaxService>();
-            services.AddScoped<IJournalService, JournalService>();
+            services.AddTransient<IJournalService, JournalService>();
             services.AddScoped<ITreasuryService, TreasuryService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ITransactionOperationsService, TransactionOperationsService>();

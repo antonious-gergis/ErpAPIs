@@ -34,11 +34,11 @@ namespace APIV2.Mark.Controllers
         
         [HttpPost]
         [Route("post/journal")]
-        public async Task<ActionResult> PostJournal(long id)
+        public async Task<ActionResult> PostJournal(long id,int transactionId)
         {
             try
             {
-                var result = await _journalService.PostJournal(id);
+                var result = await _journalService.PostJournal(id, transactionId);
                 return Ok(result);
             }
             catch (Exception ex)

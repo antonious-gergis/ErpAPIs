@@ -138,18 +138,21 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public async Task<ApiResponse<Journal>> GetItem(long id)
+        public async Task<ApiResponse<Journal>> GetItem(long id,int transactionStatus)
         {
             var result = new ApiResponse<Journal>();
+            var journal = new Journal();
             try
             {
                 var item = await _context.Journals.Where(u => u.Id == id && u.StatusId == 1)
                                     .Include(j => j.JournalDetails).FirstOrDefaultAsync();
+
                 if (item != null)
                 {
                     result.Data = item;
                     result.ErrorCode = (int)HttpStatusCode.OK;
                     result.Message = "Success";
+
                 }
                 else
                 {
@@ -167,13 +170,13 @@ namespace APIV2.Mark.Business.Services
                 return result;
             }
         }
-        private async Task<ApiResponse<bool>> UpdateTheAccountBalance(long id)
+        private async Task<ApiResponse<bool>> UpdateTheAccountBalance(long id, int transactionStatus)
         {
             var result = new ApiResponse<bool>();
 
             try
             {
-                var journal = await GetItem(id);
+                var journal = await GetItem(id,transactionStatus);
                 if (journal.Data != null)
                 {
                     if (journal.Data.TransactionState == 1)
@@ -209,14 +212,47 @@ namespace APIV2.Mark.Business.Services
                         result.ErrorCode = (int)HttpStatusCode.OK;
                         result.Message = "Success";
                     }
+                    else if (journal.Data.TransactionState == 2)
+                    {
+                        foreach (var detail in journal.Data.JournalDetails)
+                        {
+
+                            var minusCredit = detail.Debit * -1;
+                            var balance = minusCredit + detail.Credit;
+                            var account = _account.GetItem(Convert.ToInt32(detail.AccountId.GetValueOrDefault()));
+                            if (account.Data != null)
+                            {
+                                account.Data.Balance = account.Data.Balance + balance;
+                                _context.Entry(account.Data).State = EntityState.Modified;
+
+                                var parent = account.Data.ParentId;
+                                while (parent != null)
+                                {
+                                    var parentDetail = _account.GetItem(parent.GetValueOrDefault());
+                                    parentDetail.Data.Balance = parentDetail.Data.Balance + balance;
+                                    _context.Entry(parentDetail.Data).State = EntityState.Modified;
+
+                                    parent = parentDetail.Data.ParentId;
+                                }
+                            }
+                        }
+
+                        journal.Data.TransactionState = 3;
+                        journal.Data.VoidDate = DateTime.Now;
+                        _context.Entry(journal.Data).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+
+                        result.Data = true;
+                        result.ErrorCode = (int)HttpStatusCode.OK;
+                        result.Message = "Success";
+                    }
                     else
                     {
                         result.Data = false;
                         result.ErrorCode = (int)HttpStatusCode.BadRequest;
                         result.Message = "This journal is already posted!";
                         return result;
-                    }
-                   
+                    }                   
                 }
 
                 return result;
@@ -277,12 +313,12 @@ namespace APIV2.Mark.Business.Services
             }
 
         }
-        public async Task<ApiResponse<bool>> PostJournal(long id)
+        public async Task<ApiResponse<bool>> PostJournal(long id, int transactionStatus)
         {
             var result = new ApiResponse<bool>();
             try
             {
-                result = await UpdateTheAccountBalance(id);
+                result = await UpdateTheAccountBalance(id, transactionStatus);
                 return result;
             }
             catch (Exception ex)
