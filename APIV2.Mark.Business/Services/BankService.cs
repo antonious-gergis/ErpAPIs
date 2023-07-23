@@ -160,7 +160,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<Bank> GetItem(int id)
+        public ApiResponse<Bank> GetItem(long id)
         {
             var result = new ApiResponse<Bank>();
             try
@@ -237,7 +237,7 @@ namespace APIV2.Mark.Business.Services
                 return false;
         }
 
-        public bool IsItemExists(string nameEn, string nameAr, string ebanNumber, int id)
+        public bool IsItemExists(string nameEn, string nameAr, string ebanNumber, long id)
         {
             int ct = _context.Banks.Where(n => n.StatusId == 1 && (n.NameAr.ToLower() == nameAr.ToLower() || n.NameEn.ToLower() == nameEn.ToLower() || n.EbanNumber == ebanNumber) && n.Id != id).Count();
             if (ct > 0)

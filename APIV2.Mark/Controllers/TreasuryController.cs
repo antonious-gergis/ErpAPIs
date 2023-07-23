@@ -65,13 +65,13 @@ namespace APIV2.Mark.Controllers
 
         [HttpPost]
         [Route("get/treasury")]
-        public async Task<ActionResult> Getwarehouse(TreasuryDto TreasuryDto)
+        public async Task<ActionResult> GetTreasury(TreasuryDto TreasuryDto)
         {
             var result = _treasuryService.GetItem(TreasuryDto.Id);
             return Ok(result);
         }
         [HttpPost]
-        [Route("get/treasury")]
+        [Route("get/treasuries")]
         public async Task<ActionResult> GetItems()
         {
             var result = _treasuryService.GetItems();

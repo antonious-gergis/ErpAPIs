@@ -4,6 +4,7 @@ using APIV2.Mark.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIV2.Mark.Database.Migrations
 {
     [DbContext(typeof(UtilitiyContext))]
-    partial class UtilitiyContextModelSnapshot : ModelSnapshot
+    [Migration("20230723173528_updateIDs")]
+    partial class updateIDs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +64,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts", (string)null);
+                    b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Bank", b =>
@@ -110,7 +113,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Banks", (string)null);
+                    b.ToTable("Banks");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Category", b =>
@@ -143,7 +146,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.ChartOfAccount", b =>
@@ -202,7 +205,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("ChartOfAccount", (string)null);
+                    b.ToTable("ChartOfAccount");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Currency", b =>
@@ -244,7 +247,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Currencies", (string)null);
+                    b.ToTable("Currencies");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Customer", b =>
@@ -297,7 +300,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Employee", b =>
@@ -343,7 +346,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Journal", b =>
@@ -383,7 +386,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Journals", (string)null);
+                    b.ToTable("Journals");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.JournalDetail", b =>
@@ -416,7 +419,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasIndex("JournalId");
 
-                    b.ToTable("JournalDetails", (string)null);
+                    b.ToTable("JournalDetails");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Order", b =>
@@ -484,7 +487,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.OrderItem", b =>
@@ -529,7 +532,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Payment", b =>
@@ -570,7 +573,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Product", b =>
@@ -627,7 +630,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Purchase", b =>
@@ -692,7 +695,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Purchases", (string)null);
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.PurchaseItems", b =>
@@ -728,7 +731,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasIndex("PurchaseId");
 
-                    b.ToTable("PurchaseItems", (string)null);
+                    b.ToTable("PurchaseItems");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Receipt", b =>
@@ -769,7 +772,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Receipts", (string)null);
+                    b.ToTable("Receipts");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Tax", b =>
@@ -811,7 +814,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Taxes", (string)null);
+                    b.ToTable("Taxes");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.TransactionOperations", b =>
@@ -844,7 +847,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TransactionOperations", (string)null);
+                    b.ToTable("TransactionOperations");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Treasury", b =>
@@ -884,7 +887,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Treasury", (string)null);
+                    b.ToTable("Treasury");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Unit", b =>
@@ -917,7 +920,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Units", (string)null);
+                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.UserAccount", b =>
@@ -945,7 +948,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAccounts", (string)null);
+                    b.ToTable("UserAccounts");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Vendor", b =>
@@ -993,7 +996,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vendors", (string)null);
+                    b.ToTable("Vendors");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Warehouse", b =>
@@ -1030,7 +1033,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Warehouses", (string)null);
+                    b.ToTable("Warehouses");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.WarehouseInventory", b =>
@@ -1052,7 +1055,7 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WarehouseInventories", (string)null);
+                    b.ToTable("WarehouseInventories");
                 });
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.ChartOfAccount", b =>

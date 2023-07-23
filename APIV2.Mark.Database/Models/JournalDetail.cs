@@ -7,8 +7,8 @@ namespace APIV2.Mark.Database.Models
     public class JournalDetail
     {
         [Key]
-        public int Id { get; set; }
-        public int? JournalId { get; set; }
+        public long Id { get; set; }
+        public long? JournalId { get; set; }
         public long? AccountId { get; set; }
         public int? SubAccountId { get; set; }
         public double? Debit { get; set; }

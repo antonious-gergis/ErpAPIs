@@ -7,9 +7,9 @@ namespace APIV2.Mark.Database.Models
     public class WarehouseInventory
     {
         [Key]
-        public int Id { get; set; }
-        public int? ProductId { get; set; }
+        public long Id { get; set; }
+        public long? ProductId { get; set; }
         public double? Quantity { get; set; }
-        public int? WarehouseId { get; set; }
+        public long? WarehouseId { get; set; }
     }
 }

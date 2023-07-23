@@ -33,6 +33,7 @@ namespace APIV2.Mark.Database
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<Bank> Banks { get; set; } 
         public DbSet<Treasury> Treasury { get; set; } 
+        public DbSet<TransactionOperations> TransactionOperations { get; set; } 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -7,7 +7,7 @@ namespace APIV2.Mark.Database.Models
     public class Currency
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string NameEn { get; set; } = null!;
         public string NameAr { get; set; } = null!;
         public string? Country { get; set; }
@@ -16,5 +16,6 @@ namespace APIV2.Mark.Database.Models
         public double? ExchangeRate { get; set; }
         public int StatusId { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
+        public long EmpId { get; set; }
     }
 }

@@ -2,16 +2,17 @@
 using APIV2.Mark.Database;
 using APIV2.Mark.Database.Models;
 using APIV2.Mark.Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace APIV2.Mark.Business.Services
 {
     public class ChartOfAccountService : IChartOfAccountService
     {
-        private readonly UtilitiyContext _context;
+        private readonly UtilitiyContext _context; 
         public ChartOfAccountService(UtilitiyContext context)
         {
-            _context = context;
+            _context = context; 
         }
         public ApiResponse<string> Create(ChartOfAccountDto accountDto)
         {
@@ -124,9 +125,33 @@ namespace APIV2.Mark.Business.Services
             throw new NotImplementedException();
         }
 
-        public ApiResponse<ChartOfAccount> GetItem(int id)
+        public ApiResponse<ChartOfAccount> GetItem(long id)
         {
-            throw new NotImplementedException();
+            var result = new ApiResponse<ChartOfAccount>();
+            try
+            {
+                var item = _context.ChartOfAccount.Where(u => u.Id == id && u.StatusId == 1).FirstOrDefault();
+                if (item != null)
+                {
+                    result.Data = item;
+                    result.ErrorCode = (int)HttpStatusCode.OK;
+                    result.Message = "Success";
+                }
+                else
+                {
+                    result.Data = null;
+                    result.ErrorCode = (int)HttpStatusCode.BadRequest;
+                    result.Message = "Fail";
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Data = null;
+                result.ErrorCode = (int)HttpStatusCode.BadRequest;
+                result.Message = ex.Message;
+                return result;
+            }
         }
 
         public ApiResponse<TotalDetailsResponse<List<ChartOfAccount>>> GetListChartOfAccounts(Param param)
@@ -147,5 +172,7 @@ namespace APIV2.Mark.Business.Services
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

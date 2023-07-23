@@ -128,7 +128,7 @@ namespace APIV2.Mark.Business.Services
             return _errors;
         }
 
-        public ApiResponse<Customer> GetItem(int id)
+        public ApiResponse<Customer> GetItem(long id)
         {
             var result = new ApiResponse<Customer>();
             var item = _context.Customers.Where(u => u.Id == id && u.StatusId == 1).FirstOrDefault();
@@ -224,7 +224,7 @@ namespace APIV2.Mark.Business.Services
                 return false;
         }
 
-        public bool IsItemExists(string nameEn, string nameAr,string code, int id)
+        public bool IsItemExists(string nameEn, string nameAr,string code, long id)
         {
             int ct = _context.Customers.Where(n => n.StatusId == 1 && (n.NameAr.ToLower() == nameAr.ToLower() || n.NameEn.ToLower() == nameEn.ToLower() || n.AnotherCode == code) && n.Id != id).Count();
             if (ct > 0)
