@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIV2.Mark.Database.Migrations
 {
     [DbContext(typeof(UtilitiyContext))]
-    [Migration("20230627212047_addEntities")]
-    partial class addEntities
+    [Migration("20230723181212_addedModels")]
+    partial class addedModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Account", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long?>("AccountId")
                         .HasColumnType("bigint");
@@ -51,6 +51,9 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("NameAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -66,11 +69,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Bank", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
@@ -88,11 +91,14 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CurrencyId")
-                        .HasColumnType("int");
+                    b.Property<long?>("CurrencyId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EbanNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -112,17 +118,20 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -142,11 +151,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.ChartOfAccount", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<int?>("AccountLevel")
                         .HasColumnType("int");
@@ -172,6 +181,9 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("NameAr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -183,8 +195,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("OfficialCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
@@ -198,11 +210,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Currency", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -212,6 +224,9 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<double?>("ExchangeRate")
                         .HasColumnType("float");
@@ -237,11 +252,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -249,12 +264,18 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("AnotherCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
@@ -284,11 +305,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -298,6 +319,9 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
@@ -327,11 +351,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Journal", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<double?>("Amount")
                         .HasColumnType("float");
@@ -342,13 +366,22 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<DateTime?>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CurrencyId")
-                        .HasColumnType("int");
+                    b.Property<long?>("CurrencyId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("PostedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransactionState")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -358,11 +391,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.JournalDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long?>("AccountId")
                         .HasColumnType("bigint");
@@ -376,8 +409,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("JournalId")
-                        .HasColumnType("int");
+                    b.Property<long?>("JournalId")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("SubAccountId")
                         .HasColumnType("int");
@@ -391,11 +424,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long?>("AccountId")
                         .HasColumnType("bigint");
@@ -403,14 +436,17 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
 
                     b.Property<double?>("Discount")
                         .HasColumnType("float");
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<double?>("GrandTotal")
                         .HasColumnType("float");
@@ -446,8 +482,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Uuid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
+                    b.Property<long?>("WarehouseId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -456,11 +492,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.OrderItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<double?>("Cost")
                         .HasColumnType("float");
@@ -471,8 +507,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -501,11 +537,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long>("AccountId")
                         .HasColumnType("bigint");
@@ -520,8 +556,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmpId")
-                        .HasColumnType("int");
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
@@ -532,8 +568,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VendorId")
-                        .HasColumnType("int");
+                    b.Property<long>("VendorId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -542,17 +578,17 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Barcode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<long?>("CategoryId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -565,6 +601,9 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -586,8 +625,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UnitId")
-                        .HasColumnType("int");
+                    b.Property<long?>("UnitId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -596,11 +635,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Purchase", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long?>("AccountId")
                         .HasColumnType("bigint");
@@ -613,6 +652,9 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<double?>("GrandTotal")
                         .HasColumnType("float");
@@ -645,11 +687,11 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("Uuid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VendorId")
-                        .HasColumnType("int");
+                    b.Property<long>("VendorId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
+                    b.Property<long?>("WarehouseId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -658,11 +700,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.PurchaseItems", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<double?>("Cost")
                         .HasColumnType("float");
@@ -673,8 +715,8 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PurchaseId")
-                        .HasColumnType("int");
+                    b.Property<long>("PurchaseId")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("float");
@@ -694,11 +736,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Receipt", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long>("AccountId")
                         .HasColumnType("bigint");
@@ -713,11 +755,11 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("EmpId")
-                        .HasColumnType("int");
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
@@ -735,17 +777,23 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Tax", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -769,19 +817,95 @@ namespace APIV2.Mark.Database.Migrations
                     b.ToTable("Taxes");
                 });
 
-            modelBuilder.Entity("APIV2.Mark.Database.Models.Unit", b =>
+            modelBuilder.Entity("APIV2.Mark.Database.Models.TransactionOperations", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OperationCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("OperationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OperationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TransactionOperations");
+                });
+
+            modelBuilder.Entity("APIV2.Mark.Database.Models.Treasury", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.HasKey("Id");
+
+                    b.ToTable("Treasury");
+                });
+
+            modelBuilder.Entity("APIV2.Mark.Database.Models.Unit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -801,11 +925,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.UserAccount", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -820,7 +944,6 @@ namespace APIV2.Mark.Database.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -830,11 +953,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Vendor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -842,11 +965,17 @@ namespace APIV2.Mark.Database.Migrations
                     b.Property<string>("AnotherCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
@@ -872,11 +1001,11 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.Warehouse", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -887,6 +1016,9 @@ namespace APIV2.Mark.Database.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("EmpId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NameAr")
                         .IsRequired()
@@ -906,20 +1038,20 @@ namespace APIV2.Mark.Database.Migrations
 
             modelBuilder.Entity("APIV2.Mark.Database.Models.WarehouseInventory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<long?>("ProductId")
+                        .HasColumnType("bigint");
 
                     b.Property<double?>("Quantity")
                         .HasColumnType("float");
 
-                    b.Property<int?>("WarehouseId")
-                        .HasColumnType("int");
+                    b.Property<long?>("WarehouseId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

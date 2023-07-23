@@ -104,7 +104,7 @@ namespace APIV2.Mark.Business.Services
                 {
                     result.Data = false;
                     result.ErrorCode = (int)HttpStatusCode.BadRequest;
-                    result.Message = "This Product is not found";
+                    result.Message = "This warehouse is not found";
                     return result;
                 }
 
@@ -160,7 +160,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<Warehouse> GetItem(int id)
+        public ApiResponse<Warehouse> GetItem(long id)
         {
             var result = new ApiResponse<Warehouse>();
             try
@@ -266,7 +266,7 @@ namespace APIV2.Mark.Business.Services
                 return false;
         }
 
-        public bool IsItemExists(string nameEn, string nameAr, int id)
+        public bool IsItemExists(string nameEn, string nameAr, long id)
         {
             int ct = _context.Warehouses.Where(n => n.StatusId == 1 && (n.NameAr.ToLower() == nameAr.ToLower() || n.NameEn.ToLower() == nameEn.ToLower() ) && n.Id != id).Count();
             if (ct > 0)

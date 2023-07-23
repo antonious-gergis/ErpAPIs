@@ -10,7 +10,7 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface IBankService
     {
-        ApiResponse<Bank> GetItem(int id);
+        ApiResponse<Bank> GetItem(long id);
 
         ApiResponse<bool> Create(BankDto bank);
 
@@ -19,7 +19,7 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<bool> Delete(int id);
 
         public bool IsItemExists(string nameEn, string nameAr, string ebanNumber);
-        public bool IsItemExists(string nameEn, string nameAr, string ebanNumber, int id);
+        public bool IsItemExists(string nameEn, string nameAr, string ebanNumber, long id);
         ApiResponse<TotalDetailsResponse<List<Bank>>> GetListBanks(Param param);
         ApiResponse<bool> UploadBanks(List<BankDto> warehouses);
     }

@@ -10,7 +10,7 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface IWarehouseService
     {
-        ApiResponse<Warehouse> GetItem(int id);
+        ApiResponse<Warehouse> GetItem(long id);
 
         ApiResponse<bool> Create(WarehouseDto warehouse);
 
@@ -19,7 +19,7 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<bool> Delete(int id);
 
         public bool IsItemExists(string nameEn, string nameAr);
-        public bool IsItemExists(string nameEn, string nameAr, int id);
+        public bool IsItemExists(string nameEn, string nameAr, long id);
         ApiResponse<TotalDetailsResponse<List<Warehouse>>> GetListWarehouses(Param param);
         ApiResponse<List<Warehouse>> GetItems();
         ApiResponse<bool> UploadWarehouses(List<WarehouseDto> warehouses);

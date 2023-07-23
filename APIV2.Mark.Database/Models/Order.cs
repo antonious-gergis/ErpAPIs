@@ -7,7 +7,7 @@ namespace APIV2.Mark.Database.Models
     public class Order
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string OrderNumber { get; set; } = null!;
         public string? Uuid { get; set; }
         public int? OrderState { get; set; }
@@ -21,11 +21,11 @@ namespace APIV2.Mark.Database.Models
         public double? Discount { get; set; }
         public int? PaymentMethod { get; set; }
         public string? InvoiceNumber { get; set; }
-        public int CustomerId { get; set; }
-        public int WarehouseId { get; set; }
+        public long CustomerId { get; set; }
+        public long? WarehouseId { get; set; }
         public double? TotalVat { get; set; }
         public long? AccountId { get; set; }
-
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public long EmpId { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }

@@ -15,7 +15,7 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<bool> Delete(int id);
 
         public bool IsItemExists(string nameEn, string nameAr, string barcode, string sku);
-        public bool IsItemExists(string nameEn, string nameAr, string barcode, string sku, int id);
+        public bool IsItemExists(string nameEn, string nameAr, string barcode, string sku, long id);
         ApiResponse<TotalDetailsResponse<List<Product>>> GetListProducts(Param param);
         ApiResponse<List<Unit>> GetListUnits();
         ApiResponse<List<Category>> GetListCategories();

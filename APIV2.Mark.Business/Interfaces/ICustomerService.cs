@@ -12,7 +12,7 @@ namespace APIV2.Mark.Business.Interfaces
     public interface ICustomerService
     {
         ApiResponse<List<Customer>> GetItems();
-        ApiResponse<Customer> GetItem(int id);
+        ApiResponse<Customer> GetItem(long id);
 
         ApiResponse<bool> Create(Customer customer);
 
@@ -21,7 +21,7 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<bool> Delete(int id);
 
         public bool IsItemExists(string nameEn, string nameAr);
-        public bool IsItemExists(string nameEn, string nameAr,string code, int id);
+        public bool IsItemExists(string nameEn, string nameAr,string code, long id);
 
         public bool IsCustomerExists(int srcCustomerId);
         public string GetErrors();

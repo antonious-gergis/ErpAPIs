@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace APIV2.Mark.Database.Models
 {
     public class Journal
     {
         [Key]
-        public int Id { get; set; }
-        public int? CurrencyId { get; set; }
+        public long Id { get; set; }
+        public long? CurrencyId { get; set; }
         public string? Description { get; set; }
         public string? Code { get; set; }
         public DateTime? CreationDate { get; set; }
+        public DateTime? PostedDate { get; set; }
         public int? StatusId { get; set; }
         public double? Amount { get; set; }
+        public int TransactionState { get; set; } 
+        public long EmpId { get; set; } 
 
-        public ICollection<JournalDetail> JournalDetails { get; set; }
+        public ICollection<JournalDetail> JournalDetails { get; set; } = new List<JournalDetail>();
     }
 }

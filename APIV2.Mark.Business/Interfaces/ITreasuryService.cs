@@ -20,7 +20,7 @@ namespace APIV2.Mark.Business.Interfaces
 
         public bool IsItemExists(string nameEn, string nameAr);
         public bool IsItemExists(string nameEn, string nameAr, int id);
-        ApiResponse<TotalDetailsResponse<List<Treasury>>> GetListWarehouses(Param param);
+        ApiResponse<TotalDetailsResponse<List<Treasury>>> GetListTreauries(Param param);
         ApiResponse<List<Treasury>> GetItems();
     }
 }

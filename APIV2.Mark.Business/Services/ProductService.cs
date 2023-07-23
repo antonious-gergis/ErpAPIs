@@ -226,7 +226,7 @@ namespace APIV2.Mark.Business.Services
                 return false;
         }
 
-        public bool IsItemExists(string nameEn, string nameAr, string barcode,string sku, int id)
+        public bool IsItemExists(string nameEn, string nameAr, string barcode,string sku, long id)
         {
             int ct = _context.Products.Where(n => n.StatusId == 1 && (n.NameAr.ToLower() == nameAr.ToLower() || n.NameEn.ToLower() == nameEn.ToLower() || n.Barcode == barcode || n.Sku == sku) && n.Id != id).Count();
             if (ct > 0)

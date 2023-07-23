@@ -6,7 +6,7 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface IChartOfAccountService
     {
-        ApiResponse<ChartOfAccount> GetItem(int id);
+        ApiResponse<ChartOfAccount> GetItem(long id);
 
         ApiResponse<string> Create(ChartOfAccountDto account);
 
@@ -17,5 +17,6 @@ namespace APIV2.Mark.Business.Interfaces
         public bool IsItemExists(string nameEn, string nameAr, string code, string OfficialCode);
         public bool IsItemExists(string nameEn, string nameAr, string code, string OfficialCode, int id);
         ApiResponse<TotalDetailsResponse<List<ChartOfAccount>>> GetListChartOfAccounts(Param param);
+      
     }
 }
