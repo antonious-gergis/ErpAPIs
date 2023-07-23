@@ -176,35 +176,47 @@ namespace APIV2.Mark.Business.Services
                 var journal = await GetItem(id);
                 if (journal.Data != null)
                 {
-                    foreach (var detail in journal.Data.JournalDetails)
+                    if (journal.Data.TransactionState == 1)
                     {
-                        var minusCredit = detail.Credit * -1;
-                        var balance = minusCredit + detail.Debit;
-                        var account =_account.GetItem(Convert.ToInt32(detail.AccountId.GetValueOrDefault()));
-                        if (account.Data != null)
+                        foreach (var detail in journal.Data.JournalDetails)
                         {
-                            account.Data.Balance = account.Data.Balance + balance;
-                            _context.Entry(account).State = EntityState.Modified;
-
-                            var parent = account.Data.ParentId;
-                            while (parent != null)
+                            var minusCredit = detail.Credit * -1;
+                            var balance = minusCredit + detail.Debit;
+                            var account = _account.GetItem(Convert.ToInt32(detail.AccountId.GetValueOrDefault()));
+                            if (account.Data != null)
                             {
-                                var parentDetail = _account.GetItem(parent.GetValueOrDefault());
-                                parentDetail.Data.Balance = parentDetail.Data.Balance + balance;
-                                _context.Entry(parentDetail).State = EntityState.Modified;
+                                account.Data.Balance = account.Data.Balance + balance;
+                                _context.Entry(account.Data).State = EntityState.Modified;
 
-                                parent = parentDetail.Data.ParentId;
+                                var parent = account.Data.ParentId;
+                                while (parent != null)
+                                {
+                                    var parentDetail = _account.GetItem(parent.GetValueOrDefault());
+                                    parentDetail.Data.Balance = parentDetail.Data.Balance + balance;
+                                    _context.Entry(parentDetail.Data).State = EntityState.Modified;
+
+                                    parent = parentDetail.Data.ParentId;
+                                } 
                             }
-
-                            result.Data = true;
-                            result.ErrorCode = (int)HttpStatusCode.OK;
-                            result.Message = "Success";
                         }
-                    }
 
-                    journal.Data.TransactionState = 2;
-                    _context.Entry(journal.Data).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                        journal.Data.TransactionState = 2;
+                        journal.Data.PostedDate = DateTime.Now;
+                        _context.Entry(journal.Data).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+
+                        result.Data = true;
+                        result.ErrorCode = (int)HttpStatusCode.OK;
+                        result.Message = "Success";
+                    }
+                    else
+                    {
+                        result.Data = false;
+                        result.ErrorCode = (int)HttpStatusCode.BadRequest;
+                        result.Message = "This journal is already posted!";
+                        return result;
+                    }
+                   
                 }
 
                 return result;
