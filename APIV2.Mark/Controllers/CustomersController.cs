@@ -56,7 +56,7 @@ namespace API.Controllers
         {
             try
             {
-                var result =  _customerService.Create(customer); 
+                var result = await _customerService.Create(customer); 
                 return Ok(result);
             }
             catch (Exception ex)

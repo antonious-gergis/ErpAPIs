@@ -14,9 +14,9 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<List<Customer>> GetItems();
         ApiResponse<Customer> GetItem(long id);
 
-        ApiResponse<bool> Create(Customer customer);
+        Task<ApiResponse<bool>> Create(Customer customer);
 
-        ApiResponse<bool> Edit(Customer customer);
+        Task<ApiResponse<bool>> Edit(Customer customer);
 
         ApiResponse<bool> Delete(int id);
 

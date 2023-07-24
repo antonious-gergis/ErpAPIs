@@ -23,6 +23,8 @@ namespace APIV2.Mark.Extensions
             services.AddScoped<ITreasuryService, TreasuryService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ITransactionOperationsService, TransactionOperationsService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IVendorService, VendorService>();
             //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             return services;
