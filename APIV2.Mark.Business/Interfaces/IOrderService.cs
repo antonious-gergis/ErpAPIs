@@ -6,7 +6,7 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface IOrderService
     {
-        ApiResponse<Order> GetItem(int id);
+        Task<ApiResponse<Order>> GetItem(long id);
 
         Task<ApiResponse<bool>> Create(OrderDto request);
 
@@ -15,5 +15,6 @@ namespace APIV2.Mark.Business.Interfaces
         ApiResponse<bool> Delete(int id);
          
         ApiResponse<TotalDetailsResponse<List<OrderDto>>> GetListOrders(Param param);
+        Task<ApiResponse<bool>> CalculateInvoice(long id);
     }
 }

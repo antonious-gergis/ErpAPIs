@@ -250,14 +250,14 @@ namespace APIV2.Mark.Business.Services
                 var newCode = "";
                 if (latestCode != null)
                 {
-                    var codeString = latestCode.Substring(1);
+                    var codeString = latestCode.Substring(3);
                     var code = Convert.ToInt64(codeString);
                     code = code + 1;
-                    newCode = "P" + code;
+                    newCode = "PRO" + code;
                 }
                 else
                 {
-                    newCode = "P" + "10000";
+                    newCode = "PRO" + "10000";
                 }
 
                 return newCode;

@@ -18,5 +18,6 @@ namespace APIV2.Mark.Entities.Dtos
         public string? Notes { get; set; }
         public int StatusId { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
+        public long EmpId { get; set; }
     }
 }

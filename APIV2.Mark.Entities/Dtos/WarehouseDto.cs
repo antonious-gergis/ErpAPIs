@@ -9,5 +9,6 @@
         public string? Description { get; set; }
         public int StatusId { get; set; }
         public DateTime CreationDate { get; set; }
+        public long EmpId { get; set; }
     }
 }

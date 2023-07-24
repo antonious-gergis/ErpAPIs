@@ -17,5 +17,6 @@ namespace APIV2.Mark.Entities.Dtos
         public int StatusId { get; set; }
         public int SelectAccountTaxId { get; set; }
         public DateTime CreationDate { get; set; }
+        public long EmpId { get; set; }
     }
 }

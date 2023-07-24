@@ -16,7 +16,7 @@ namespace APIV2.Mark.Entities.Dtos
         public int? StatusId { get; set; }
         public double? Amount { get; set; }
         public DateTime? PostedDate { get; set; }
-        public int EmpId { get; set; }
+        public long EmpId { get; set; }
         public string? OperationName { get; set; }
         public List<JournalDetailDto> JournalDetails { get; set; } = new List<JournalDetailDto>();
     }

@@ -8,6 +8,7 @@
         public string? Description { get; set; }
         public double? Price { get; set; }
         public double? Cost { get; set; }
+        public double? Tax { get; set; }
         public string? ImageUrl { get; set; }
         public string? Unit { get; set; }
         public string? Category { get; set; }
@@ -16,5 +17,6 @@
         public string? Barcode { get; set; }
         public string? Sku { get; set; }
         public string? Code { get; set; }
+        public long EmpId { get; set; }
     }
 }

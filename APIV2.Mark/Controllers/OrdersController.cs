@@ -22,7 +22,7 @@ namespace API.Controllers
         {
             try
             {
-                var result = _orderService.Create(order);
+                var result = await _orderService.Create(order);
                 return Ok(result);
             }
             catch (Exception ex)

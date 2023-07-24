@@ -12,5 +12,6 @@
         public string? Code { get; set; } 
         public string? AnotherCode { get; set; }
         public int StatusId { get; set; }
+        public long EmpId { get; set; }
     }
 }
