@@ -6,13 +6,13 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface IProductService
     {
-        ApiResponse<Product> GetItem(int id);
+        ApiResponse<Product> GetItem(long id);
         ApiResponse<List<Product>> GetItems();
         ApiResponse<bool> Create(Product product);
 
         ApiResponse<bool> Edit(Product product);
 
-        ApiResponse<bool> Delete(int id);
+        ApiResponse<bool> Delete(long id);
 
         public bool IsItemExists(string nameEn, string nameAr, string barcode, string sku);
         public bool IsItemExists(string nameEn, string nameAr, string barcode, string sku, long id);

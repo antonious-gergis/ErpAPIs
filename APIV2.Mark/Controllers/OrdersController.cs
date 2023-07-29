@@ -30,5 +30,20 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("recalculate/order")]
+        public async Task<ActionResult> CalculateInvoice(long id)
+        {
+            try
+            {
+                var result = await _orderService.CalculateInvoice(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

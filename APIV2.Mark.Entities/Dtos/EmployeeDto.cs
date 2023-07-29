@@ -8,7 +8,7 @@ namespace APIV2.Mark.Entities.Dtos
 {
     public class EmployeeDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string NameEn { get; set; } = null!;
         public string NameAr { get; set; } = null!;
         public string? Code { get; set; }

@@ -10,13 +10,13 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface ITreasuryService
     {
-        ApiResponse<Treasury> GetItem(int id);
+        ApiResponse<Treasury> GetItem(long id);
 
         ApiResponse<bool> Create(TreasuryDto treasury);
 
         ApiResponse<bool> Edit(Treasury treasury);
 
-        ApiResponse<bool> Delete(int id);
+        ApiResponse<bool> Delete(long id);
 
         public bool IsItemExists(string nameEn, string nameAr);
         public bool IsItemExists(string nameEn, string nameAr, int id);

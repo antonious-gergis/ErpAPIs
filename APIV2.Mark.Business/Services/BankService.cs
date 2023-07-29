@@ -93,7 +93,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<bool> Delete(int id)
+        public ApiResponse<bool> Delete(long id)
         {
             var result = new ApiResponse<bool>();
             try

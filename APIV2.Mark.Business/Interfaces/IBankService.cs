@@ -16,7 +16,7 @@ namespace APIV2.Mark.Business.Interfaces
 
         ApiResponse<bool> Edit(Bank bank);
 
-        ApiResponse<bool> Delete(int id);
+        ApiResponse<bool> Delete(long id);
 
         public bool IsItemExists(string nameEn, string nameAr, string ebanNumber);
         public bool IsItemExists(string nameEn, string nameAr, string ebanNumber, long id);

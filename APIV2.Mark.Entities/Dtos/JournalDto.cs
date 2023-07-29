@@ -8,8 +8,8 @@ namespace APIV2.Mark.Entities.Dtos
 {
     public class JournalDto
     {
-        public int Id { get; set; }
-        public int? CurrencyId { get; set; }
+        public long Id { get; set; }
+        public long? CurrencyId { get; set; }
         public string? Description { get; set; }
         public string? Code { get; set; }
         public DateTime? CreationDate { get; set; }

@@ -11,11 +11,11 @@ namespace APIV2.Mark.Database.Models
         public int ProductId { get; set; }
         public double Quantity { get; set; }
         public double Price { get; set; }
-        public double? Vat { get; set; }
+        public double? Vat { get; set; } = 0;
         public double? Cost { get; set; }
-        public double? Total { get; set; }
-        public double? TotalBeforeVatAndDiscount { get; set; }
-        public double? Discount { get; set; }
+        public double? Total { get; set; } = 0;
+        public double? TotalBeforeVatAndDiscount { get; set; } = 0;
+        public double? Discount { get; set; } = 0;
         public long OrderId { get; set; }
         public string? Notes { get; set; }
 

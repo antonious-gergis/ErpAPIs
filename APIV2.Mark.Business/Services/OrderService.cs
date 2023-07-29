@@ -32,6 +32,7 @@ namespace APIV2.Mark.Business.Services
 
                     var customer = _customer.GetItem(request.CustomerId);
                     var random = new Random();
+                    var uuid = Guid.NewGuid().ToString("N");
                     order.OrderNumber = Math.Floor(100000 + random.NextDouble() * 900000).ToString();
                     order.InvoiceNumber = GenerateCode();
                     order.CreationDate = DateTime.Now;
@@ -41,7 +42,8 @@ namespace APIV2.Mark.Business.Services
                     order.WarehouseId = request.WarehouseId;
                     order.OrderState = (int)OrderStatus.Pending;
                     order.Discount = 0; 
-                    order.AccountId = 0;
+                    order.AccountId = 21;
+                    order.Uuid = uuid;
                     if (customer.Data != null)
                     {
                         order.CustomerNameAr = customer.Data.NameAr;
@@ -65,9 +67,9 @@ namespace APIV2.Mark.Business.Services
 
                         var tax = 0 /*Convert.ToDecimal(db.Taxes.Find(details.Product_Tax).Tax_Percentage)*/;
                         orderItem.Vat = TotalAfterDiscount * (tax / 100);
-                        order.TotalVat += orderItem.Vat;
-                        orderItem.Total = TotalAfterVat - discount;
-                        orderItem.TotalBeforeVatAndDiscount = TotalBeforeDiscount;
+                        //order.TotalVat += orderItem.Vat;
+                        orderItem.Total = 0;//TotalAfterVat - discount;
+                        orderItem.TotalBeforeVatAndDiscount = 0;//TotalBeforeDiscount;
                        
                         orderItem.Notes = "";
                         orderItem.Cost = product?.Cost;

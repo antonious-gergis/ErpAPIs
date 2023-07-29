@@ -55,7 +55,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<bool> Delete(int id)
+        public ApiResponse<bool> Delete(long id)
         {
             var result = new ApiResponse<bool>();
             try
@@ -121,7 +121,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<Product> GetItem(int id)
+        public ApiResponse<Product> GetItem(long id)
         {
             var result = new ApiResponse<Product>();
             try

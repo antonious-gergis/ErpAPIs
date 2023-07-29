@@ -94,7 +94,7 @@ namespace APIV2.Mark.Business.Services
             }
         }
 
-        public ApiResponse<bool> Delete(int id)
+        public ApiResponse<bool> Delete(long id)
         {
 
             var result = new ApiResponse<bool>();
@@ -135,7 +135,7 @@ namespace APIV2.Mark.Business.Services
             throw new NotImplementedException();
         }
 
-        public ApiResponse<Treasury> GetItem(int id)
+        public ApiResponse<Treasury> GetItem(long id)
         {
             var result = new ApiResponse<Treasury>();
             try

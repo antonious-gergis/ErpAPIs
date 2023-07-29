@@ -21,7 +21,7 @@ namespace APIV2.Mark.Entities.Dtos
         public string? AccountType { get; set; }
         public int StatusId { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
-        public int? ParentId { get; set; }
+        public long? ParentId { get; set; }
         public long EmpId { get; set; }
     }
 }

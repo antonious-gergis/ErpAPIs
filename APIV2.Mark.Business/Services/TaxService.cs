@@ -99,7 +99,7 @@ namespace APIV2.Mark.Business.Services
             throw new NotImplementedException();
         }
 
-        public ApiResponse<Tax> GetItem(int id)
+        public ApiResponse<Tax> GetItem(long id)
         {
             throw new NotImplementedException();
         }

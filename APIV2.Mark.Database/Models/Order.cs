@@ -10,9 +10,9 @@ namespace APIV2.Mark.Database.Models
         public long Id { get; set; }
         public string OrderNumber { get; set; } = null!;
         public string? Uuid { get; set; }
-        public int? OrderState { get; set; }
+        public int? OrderState { get; set; } = 1;
         public string? Notes { get; set; }
-        public int StatusId { get; set; }
+        public int StatusId { get; set; } = 1;
         public DateTime CreationDate { get; set; } = DateTime.Now;
         public DateTime? DueDate { get; set; }
         public double? SubTotal { get; set; } = 0;

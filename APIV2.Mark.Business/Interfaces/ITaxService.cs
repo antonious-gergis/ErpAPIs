@@ -10,7 +10,7 @@ namespace APIV2.Mark.Business.Interfaces
 {
     public interface ITaxService
     {
-        ApiResponse<Tax> GetItem(int id);
+        ApiResponse<Tax> GetItem(long id);
 
         ApiResponse<bool> Create(TaxDto tax);
 

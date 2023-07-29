@@ -18,7 +18,7 @@ namespace APIV2.Mark.Business.Interfaces
 
         Task<ApiResponse<bool>> Edit(Customer customer);
 
-        ApiResponse<bool> Delete(int id);
+        ApiResponse<bool> Delete(long id);
 
         public bool IsItemExists(string nameEn, string nameAr);
         public bool IsItemExists(string nameEn, string nameAr,string code, long id);
